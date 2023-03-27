@@ -5,7 +5,5 @@ backButton.onclick = function(){
 }
 
 function changePage(page){
-
     window.location.href = page;
-
 }
