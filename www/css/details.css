@@ -1,11 +1,6 @@
-#back_bttn {
+.header_div {
 
-
-
-}
-
-#header_label {
-
-
+    display: flex;
+    justify-content: space-between;
 
 }
