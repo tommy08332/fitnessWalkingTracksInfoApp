@@ -1,3 +1,4 @@
+/*navbar code starts here*/
 .header_div {
     font-family:monospace;
     font-weight: bold;
@@ -27,8 +28,39 @@
   font-size:150%;
   width:15%;
 }
+.dropdown{
+ background-color: #4CAF50;/* Green */
+ width:15%;
+}
 
+.dropdown-content {
+padding-top:15%;
+  display: none;
+  position: absolute;
+  background-color: #4CAF50;
+  min-width: 160px;
+  height:1000px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  color:white;
+  font-family:monospace;
 
+}
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+/*first item for the drop down menu*/
+.lang{
+   text-align: center;
+}
+
+/*this value change when user select chinese or english*/
+.langvalue{
+ padding-left:5px;
+}
+
+/*navbar code ends here*/
 .main_div {
     display: flex;
     justify-content: space-between;
@@ -61,22 +93,4 @@ padding-left:1.5%
 }
 
 
-/*testing drop down code here*/
-.dropdown{
- background-color: #4CAF50;/* Green */
-}
 
-.dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: #4CAF50;
-  min-width: 50%;
-  height:1000px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  z-index: 1;
-  color:red;
-
-}
-.dropdown:hover .dropdown-content {
-  display: block;
-}
