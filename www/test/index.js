@@ -77,3 +77,14 @@ var shorttable = document.getElementsByClassName("tableFixHead");
     }
 }
 
+//map button code ends here
+backButton = document.querySelector("#mapbtn");
+
+backButton.onclick = function(){
+    changePage("map.html");
+}
+
+function changePage(page){
+    window.location.href = page;
+}
+
