@@ -22,8 +22,8 @@ display:inline;
 }
 
 
-/*filer button css*/
-#filterbtn{
+/*bookmark button css*/
+#bookmarkbtn{
 font-size:80%;
 color:white;
 border:none;
@@ -61,9 +61,7 @@ display:flex;
 align-items:center;
 justify-content:center;
 opacity: 0.7;
-/*display:none; use this last */
 }
-
 /*navbar code ends here*/
 
 
@@ -71,12 +69,17 @@ opacity: 0.7;
 #label-setting{
     background-color: #3333FF;
     width:100%;
-    padding-top:1.5%;
+    padding-top:3%;
     text-align: center;
     color:white;
+    padding-bottom:4.5%;
 }
 
-
+hr{
+    padding:0%;
+    margin:0%;
+}
+/*copy till here on every other page*/
 
 
 .main_div {
@@ -95,11 +98,6 @@ opacity: 0.7;
     background-color:#000C66;
     padding:2%;
     display:none;
-}
-
-hr{
-    padding:0%;
-    margin:0%;
 }
 
 #search_bttn{
