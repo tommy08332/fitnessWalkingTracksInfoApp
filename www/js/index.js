@@ -125,7 +125,26 @@ function changeToDetailPage(){
 
 }
 
-function search() {};
+function search() {
+    var input = document.getElementById("search_input_field");
+    var filter = input.value.toUpperCase();
+    var tbody = document.getElementById("records_table");
+    var tr = tbody.getElementsByTagName("tr");
+
+    for(var i =0; tr.length;i++){
+         td = tr[i].getElementsByTagName("td")[0] ;
+            if(td){
+                var txtValue = td.textContent || td.innerText;
+                if(txtValue.toUpperCase().indexOf(filter) >-1){
+                        tr[i].style.display = "";
+                    }else{
+                       tr[i].style.display = "none";
+                    }
+            }
+
+    }
+
+};
 
 createLanguageType();
 
