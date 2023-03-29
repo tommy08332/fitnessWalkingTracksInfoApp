@@ -85,9 +85,7 @@ function showRoute(data){
             var new_cell = new_row.insertCell();
             var new_text = document.createTextNode(data[i].Title_tc);
             new_cell.appendChild(new_text);
-            new_cell.setAttribute("onclick", "location.href='details.html'");
-//            new_cell.setAttribute("onclick", "changeToDetailPage()");
-            new_cell.setAttribute("value", data[i].Title_tc);
+            new_cell.setAttribute("onclick", "changeToDetailPage(this)");
         }
     } else {
         for (var i = 0; i < data.length; i++){
@@ -95,37 +93,44 @@ function showRoute(data){
             var new_cell = new_row.insertCell();
             var new_text = document.createTextNode(data[i].Title_en);
             new_cell.appendChild(new_text);
-            new_cell.setAttribute("onclick", "location.href='details.html'");
-//            new_cell.setAttribute("onclick", "changeToDetailPage()");
-            new_cell.setAttribute("value", data[i].Title_en);
+            new_cell.setAttribute("onclick", "changeToDetailPage(this)");
         }
 
     }
 
 };
 
-function changeToDetailPage(){
+function changeToDetailPage(tableObj){
 
+//    document.getElementById("test_label").innerHTML = text.textContent;
+    const localStorage = window.localStorage;
+    localStorage.removeItem("selected_facility");
+    const facility_data = localStorage.getItem("facility_data");
+    const language_type = localStorage.getItem("language_type");
 
+    var facilities = JSON.parse(facility_data);
 
-//     document.getElementById("test_label").innerHTML = text;
+    for (var i of facilities){
 
-//     var tbody = document.getElementById("records_table");
-//     var tr = getElementsByTagName("tr");
+        if (language_type === "zh_hk" &&
+            i.Title_tc === tableObj.textContent){
 
-//     for (i = 0; i < tr.length; i++){
+            localStorage.setItem("selected_facility", JSON.stringify(i));
+            break;
+        } else if (language_type === "eng" &&
+                   i.Title_en === tableObj.textContent){
 
-//         var currentRow = tbody.row[i];
+            localStorage.setItem("selected_facility", JSON.stringify(i));
+            break;
 
-//         document.getElementById("test_label").innerHTML = currentRow;
-//     }
-
-
-// //    document.getElementById("test_label").innerHTML = tr.textContent;
+        }
+    }
+    window.location.href = "details.html";
 
 }
 
 function search() {
+
     var input = document.getElementById("search_input_field");
     var filter = input.value.toUpperCase();
     var tbody = document.getElementById("records_table");
@@ -143,6 +148,7 @@ function search() {
             }
 
     }
+
 
 };
 
