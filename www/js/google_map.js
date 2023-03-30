@@ -77,10 +77,14 @@ function getFacilityData() {
 
 //bottom bar
 const homeButton = document.querySelector("#homebtn");
+const bookButton = document.querySelector("#bookmarkbtn");
 const langButton = document.querySelector("#lang_bttn");
 
 homeButton.onclick = function(){
     changePage("index.html");
+}
+bookButton.onclick = function(){
+    changePage("bookmark.html");
 }
 
 langButton.onclick = function () {
@@ -96,8 +100,6 @@ langButton.onclick = function () {
         default:
             language = "eng";
     }
-
-    document.getElementById("lang_bttn").value = language;
     setText(language);
     getFacilityData();
 
@@ -115,6 +117,7 @@ function createLanguageType() {
     } else {
 
         localStorage.setItem("language_type", "eng");
+
         createLanguageType();
 
     }
@@ -127,6 +130,7 @@ function setText(language) {
 
     const localStorage = window.localStorage;
     let language_type = localStorage.getItem("language_type");
+    langButton.value = language;
 
     if (language_type !== language) {
 
@@ -143,12 +147,10 @@ function setText(language) {
 
         /// set text to traditional chinese
         document.getElementById("headLbl").innerHTML = "健步行徑";
-        document.getElementById("mapbtn").innerHTML = "地圖";
-        document.getElementById("bookmarkbtn").innerHTML = "書籤";
-        document.getElementById("homebtn").innerHTML = "主頁";
-        document.getElementById("lang_bttn").innerHTML = "English";
-        document.getElementById("search_input_field").placeholder = "搜尋位置";
-        document.getElementById("search_bttn").innerHTML = "搜尋";
+        document.getElementById("map_text").innerHTML = "地圖";
+        document.getElementById("bookmark_text").innerHTML = "書籤";
+        document.getElementById("home_text").innerHTML = "主頁";
+        document.getElementById("lang_text").innerHTML = "English";
 
     } else {
 
@@ -156,12 +158,10 @@ function setText(language) {
 
         /// set text to english
         document.getElementById("headLbl").innerHTML = "Fitness Walking Tracks";
-        document.getElementById("mapbtn").innerHTML = "Map";
-        document.getElementById("bookmarkbtn").innerHTML = "Bookmark";
-        document.getElementById("homebtn").innerHTML = "Home";
-        document.getElementById("lang_bttn").innerHTML = "中文";
-        document.getElementById("search_input_field").placeholder = "Search location";
-        document.getElementById("search_bttn").innerHTML = "Search";
+        document.getElementById("map_text").innerHTML = "Map";
+        document.getElementById("bookmark_text").innerHTML = "Bookmark";
+        document.getElementById("home_text").innerHTML = "Home";
+        document.getElementById("lang_text").innerHTML = "中文";
     }
 
 };
