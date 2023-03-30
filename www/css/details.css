@@ -5,12 +5,13 @@
    bottom: 0;
    width: 100%;
    z-index: 5;
-   background-color: 3333FF;
+   background-color: #4141EF;
    color: white;
    text-align: center;
    height:11%;
    display:inline;
 }
+
 #navitems{
 height:100%;
 padding:0;
@@ -56,15 +57,15 @@ background:none;
 }
 
 /*language setting code here*/
-#language_Setting{
-width:100%;
-height:100%;
-background:black;
-display:flex;
-align-items:center;
-justify-content:center;
-opacity: 0.7;
+#label-setting{
+    background-color: #4141EF;
+    width:100%;
+    padding-top:3%;
+    text-align: center;
+    color:white;
+    padding-bottom:4.5%;
 }
+
 /*navbar code ends here*/
 
 
