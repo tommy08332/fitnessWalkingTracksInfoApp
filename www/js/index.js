@@ -182,16 +182,29 @@ function search() {
     var tbody = document.getElementById("records_table");
     var tr = tbody.getElementsByTagName("tr");
 
-    for(var i =0; tr.length;i++){
-         td = tr[i].getElementsByTagName("td")[0] ;
-            if(td){
-                var txtValue = td.textContent || td.innerText;
-                if(txtValue.toUpperCase().indexOf(filter) >-1){
-                        tr[i].style.display = "";
-                    }else{
-                       tr[i].style.display = "none";
-                    }
-            }
+//    for(var i =0; tr.length;i++){
+//         td = tr[i].getElementsByTagName("td")[0] ;
+//            if(td){
+//                var txtValue = td.textContent || td.innerText;
+//                if(txtValue.toUpperCase().indexOf(filter) >-1){
+//                        tr[i].style.display = "";
+//                    }else{
+//                       tr[i].style.display = "none";
+//                    }
+//            }
+//
+//    }
+
+    const localStorage = window.localStorage;
+    let language_type = localStorage.getItem("language_type");
+    console.log("language_type  ",language_type);
+    if (language_type === "zh_hk"){
+
+        document.getElementById("searchbtn").innerHTML = "主頁";
+
+    } else{
+
+        document.getElementById("searchbtn").innerHTML = "Home";
 
     }
 
@@ -201,6 +214,9 @@ function search() {
 
 //search button
 function show_hide_searchbar(){
+
+
+
     var hidesearch = document.getElementById("middle-part");
     var shorttable = document.getElementsByClassName("tableFixHead");
 
@@ -217,6 +233,8 @@ function show_hide_searchbar(){
         }else {
              shorttable.style.height = "420px";
         }
+
+
 }
 
 
