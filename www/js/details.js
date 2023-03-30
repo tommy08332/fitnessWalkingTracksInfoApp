@@ -1,4 +1,5 @@
 // finish
+// buttons
 const homeButton = document.querySelector("#homebtn");
 const mapButton = document.querySelector("#mapbtn");
 const langButton = document.querySelector("#lang_bttn");
@@ -10,11 +11,14 @@ mapButton.onclick = function(){
 langButton.onclick = function (){
 
     let language = document.getElementById("lang_bttn").value;
+
     if (language === "zh_hk"){
 
         language = "eng";
     } else{
+
         language = "zh_hk";
+
     }
 
     document.getElementById("lang_bttn").value = language;
@@ -93,23 +97,23 @@ function showSelectedRouteDetails(){
 
     data = JSON.parse(data);
 
-    console.log("showSelectedRouteDetails   ",data);
-
+    var picture = document.getElementById("img_photo");
+//
     if (language === "zh_hk"){
 
-        console.log("Title ",data.Title_tc);
-        console.log("District ",data.District_tc);
-        console.log("Route ",data.Route_tc);
-        console.log("How to Access", data.HowToAccess_tc);
-        console.log("Map URL", data.MapURL_tc);
+        picture.setAttribute("src", data.MapURL_tc);
+        document.getElementById("locationData").innerHTML = "路徑 : " + data.Title_tc;
+        document.getElementById("districtData").innerHTML = "分區 : " + data.District_tc;
+        document.getElementById("routeData").innerHTML = data.Route_tc;
+        document.getElementById("howToAccessData").innerHTML = "途徑 : " + data.HowToAccess_tc;
 
     } else {
 
-        console.log("Title ",data.Title_en);
-        console.log("District ",data.District_en);
-        console.log("Route ",data.Route_en);
-        console.log("How to Access", data.HowToAccess_en);
-        console.log("Map URL", data.MapURL_en);
+        picture.setAttribute("src", data.MapURL_en);
+        document.getElementById("locationData").innerHTML = "Title : " + data.Title_en;
+        document.getElementById("districtData").innerHTML = "District : " + data.District_en;
+        document.getElementById("routeData").innerHTML = data.Route_en;
+        document.getElementById("howToAccessData").innerHTML = "How to Access : " + data.HowToAccess_en;
 
     }
 
