@@ -252,8 +252,6 @@ function changePage(page){
 
 }
 
-
-
 createLanguageType();
 
 getFacilityData();
