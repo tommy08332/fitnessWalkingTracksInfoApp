@@ -65,10 +65,17 @@ function setText(language){
         document.getElementById("headLbl").innerHTML = "健步行徑";
         document.getElementById("map_text").innerHTML = "地圖";
         document.getElementById("bookmark_text").innerHTML = "書籤";
-        document.getElementById("search_text").innerHTML = "搜尋";
+        // document.getElementById("search_text").innerHTML = "搜尋";
+        // document.getElementById("home_text").innerHTML = "主頁";
         document.getElementById("lang_text").innerHTML = "中文";
         document.getElementById("search_input_field").placeholder = "搜尋位置";
         document.getElementById("search_bttn").innerHTML = "搜尋";
+        if(document.getElementById("search_text") !='undefined'){
+            document.getElementById("search_text").innerHTML = "搜尋";
+        }
+        if(document.getElementById("home_text") !='undefined'){
+            document.getElementById("home_text").innerHTML = "主頁";
+        }
 
     } else {
 
@@ -78,10 +85,17 @@ function setText(language){
         document.getElementById("headLbl").innerHTML = "Fitness Walking Tracks";
         document.getElementById("map_text").innerHTML = "Map";
         document.getElementById("bookmark_text").innerHTML = "Bookmark";
-        document.getElementById("search_text").innerHTML = "Search";
+        // document.getElementById("search_text").innerHTML = "Search";
+        // document.getElementById("home_text").innerHTML = "Home";
         document.getElementById("lang_text").innerHTML = "ENGLISH";
         document.getElementById("search_input_field").placeholder = "Search location";
         document.getElementById("search_bttn").innerHTML = "Search";
+        if(document.getElementById("search_text") !='undefined'){
+            document.getElementById("search_text").innerHTML = "Search";
+        }
+        if(document.getElementById("home_text") !='undefined'){
+            document.getElementById("home_text").innerHTML = "Home";
+        }
     }
 
 };
@@ -198,11 +212,11 @@ var input = document.getElementById("search_input_field");
 
     if (language_type === "zh_hk"){
 
-        searchbtn.innerHTML = "主頁";
+        searchbtn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-house-door-fill" viewBox="0 0 16 16"><path d="M6.5 14.5v-3.505c0-.245.25-.495.5-.495h2c.25 0 .5.25.5.5v3.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5Z"/></svg><div id="home_text">主頁</div>';
 
     } else{
 
-        searchbtn.innerHTML = "Home";
+        searchbtn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-house-door-fill" viewBox="0 0 16 16"><path d="M6.5 14.5v-3.505c0-.245.25-.495.5-.495h2c.25 0 .5.25.5.5v3.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5Z"/></svg><div id="home_text">Home</div>';
 
     }
     var searchbtn = document.getElementById("searchbtn");
