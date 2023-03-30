@@ -66,6 +66,8 @@ function setText(language){
         document.getElementById("bookmarkbtn").innerHTML = "書籤";
         document.getElementById("searchbtn").innerHTML = "搜尋";
         document.getElementById("lang_bttn").innerHTML = "中文";
+        document.getElementById("search_input_field").placeholder = "搜尋位置";
+        document.getElementById("search_bttn").innerHTML = "搜尋";
 
     } else {
 
@@ -77,7 +79,8 @@ function setText(language){
         document.getElementById("bookmarkbtn").innerHTML = "Bookmark";
         document.getElementById("searchbtn").innerHTML = "Search";
         document.getElementById("lang_bttn").innerHTML = "ENGLISH";
-
+        document.getElementById("search_input_field").placeholder = "Search location";
+        document.getElementById("search_bttn").innerHTML = "Search";
     }
 
 };
@@ -224,6 +227,8 @@ function changePage(page){
 }
 
 
+
 createLanguageType();
 
 getFacilityData();
+
