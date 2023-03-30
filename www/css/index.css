@@ -85,7 +85,6 @@ hr{
 .main_div {
     display: flex;
     justify-content: space-between;
-
 }
 
 #search_input_field{
@@ -95,13 +94,14 @@ hr{
 }
 
 #middle-part{
-    background-color:#000C66;
+    background-color:#1e1e99;
     padding:2%;
     display:none;
 }
 
 #search_bttn{
-    padding-left:1.5%
+    background-color:green;
+    text-align: center;
 }
 
 #surrounding_location{
