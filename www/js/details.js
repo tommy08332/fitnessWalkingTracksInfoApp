@@ -66,10 +66,10 @@ function setText(language){
 
         /// set text to traditional chinese
         document.getElementById("headLbl").innerHTML = "詳細信息";
-        document.getElementById("mapbtn").innerHTML = "地圖";
-        document.getElementById("bookmarkbtn").innerHTML = "書籤";
-        document.getElementById("homebtn").innerHTML = "主頁";
-        document.getElementById("lang_bttn").innerHTML = "中文";
+        document.getElementById("map_text").innerHTML = "地圖";
+        document.getElementById("bookmark_text").innerHTML = "書籤";
+        document.getElementById("home_text").innerHTML = "主頁";
+        document.getElementById("lang_text").innerHTML = "中文";
 
     } else {
         console.log("language_type",  language_type);
@@ -77,10 +77,10 @@ function setText(language){
 
         /// set text to english
         document.getElementById("headLbl").innerHTML = "Details";
-        document.getElementById("mapbtn").innerHTML = "Map";
-        document.getElementById("bookmarkbtn").innerHTML = "Bookmark";
-        document.getElementById("homebtn").innerHTML = "Home";
-        document.getElementById("lang_bttn").innerHTML = "ENGLISH";
+        document.getElementById("map_text").innerHTML = "Map";
+        document.getElementById("bookmark_text").innerHTML = "Bookmark";
+        document.getElementById("home_text").innerHTML = "Home";
+        document.getElementById("lang_text").innerHTML = "ENGLISH";
 
     }
 
