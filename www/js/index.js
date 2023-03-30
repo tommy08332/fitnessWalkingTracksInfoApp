@@ -16,7 +16,7 @@ langButton.onclick = function (){
         language = "zh_hk";
     }
 
-    
+
     setText(language);
     getFacilityData();
 
@@ -38,7 +38,6 @@ function createLanguageType() {
 
     }
 
-
 };
 
 
@@ -59,8 +58,6 @@ function setText(language){
 
     if (language_type === "zh_hk"){
 
-        /// set picture
-
         /// set text to traditional chinese
         document.getElementById("headLbl").innerHTML = "健步行徑";
         document.getElementById("map_text").innerHTML = "地圖";
@@ -78,8 +75,6 @@ function setText(language){
         }
 
     } else {
-
-        /// set picture
 
         /// set text to english
         document.getElementById("headLbl").innerHTML = "Fitness Walking Tracks";
@@ -190,6 +185,7 @@ function redirectDetailPage(tableObj){
 
 }
 
+
 function search() {
 
 var input = document.getElementById("search_input_field");
@@ -219,14 +215,11 @@ var input = document.getElementById("search_input_field");
         searchbtn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-house-door-fill" viewBox="0 0 16 16"><path d="M6.5 14.5v-3.505c0-.245.25-.495.5-.495h2c.25 0 .5.25.5.5v3.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5Z"/></svg><div id="home_text">Home</div>';
 
     }
-//    var searchbtn = document.getElementById("searchbtn");
-//    searchbtn.setAttribute("onclick", "searchReset()");
 
 };
 
 //nav bar code here
 
-//search button
 function show_hide_searchbar(){
     console.log("show hide search bar");
     var hidesearch = document.getElementById("middle-part");
@@ -253,22 +246,6 @@ function show_hide_searchbar(){
 
 }
 
-//function searchReset(){
-//
-//    var hidesearch = document.getElementById("middle-part");
-//    hidesearch.style.display = "none";
-//
-//    createLanguageType();
-//    getFacilityData();
-//
-//    var searchbtn = document.getElementById("searchbtn");
-//    search_bttn.setAttribute("onclick", "show_hide_searchbar()");
-//
-//    document.getElementById("search_input_field").innerHTML = "";
-//
-//}
-
-
 function changePage(page){
 
     window.location.href = page;
@@ -280,4 +257,3 @@ function changePage(page){
 createLanguageType();
 
 getFacilityData();
-
