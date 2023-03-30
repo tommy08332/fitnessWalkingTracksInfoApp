@@ -1,234 +1,82 @@
-//map button code ends here
-const mapButton = document.querySelector("#mapbtn");
-const langButton = document.querySelector("#lang_bttn");
-
-mapButton.onclick = function(){
-    changePage("map.html");
-}
-
-langButton.onclick = function (){
-
-    let language = document.getElementById("lang_bttn").value;
-    if (language === "zh_hk"){
-
-        language = "eng";
-    } else{
-        language = "zh_hk";
-    }
-
-    document.getElementById("lang_bttn").value = language;
-    setText(language);
-    getFacilityData();
-
-}
-
-function createLanguageType() {
-
-    const localStorage = window.localStorage;
-    const language_type = localStorage.getItem("language_type");
-
-    if (language_type){
-
-        setText(language_type);
-
-    } else {
-
-        localStorage.setItem("language_type", "eng");
-        createLanguageType();
-
-    }
-
-
-};
-
-
-function setText(language){
-
-    const localStorage = window.localStorage;
-    let language_type = localStorage.getItem("language_type");
-
-    if (language_type !== language){
-
-        localStorage.setItem("language_type", language);
-        language_type = language;
-
-    }
-
-    console.log("language_type    ", language_type);
-
-    if (language_type === "zh_hk"){
-
-        /// set picture
-
-        /// set text to traditional chinese
-        document.getElementById("headLbl").innerHTML = "健步行徑";
-        document.getElementById("mapbtn").innerHTML = "地圖";
-        document.getElementById("bookmarkbtn").innerHTML = "書籤";
-        document.getElementById("searchbtn").innerHTML = "搜尋";
-        document.getElementById("lang_bttn").innerHTML = "中文";
-        document.getElementById("search_input_field").placeholder = "搜尋位置";
-        document.getElementById("search_bttn").innerHTML = "搜尋";
-
-    } else {
-
-        /// set picture
-
-        /// set text to english
-        document.getElementById("headLbl").innerHTML = "Fitness Walking Tracks";
-        document.getElementById("mapbtn").innerHTML = "Map";
-        document.getElementById("bookmarkbtn").innerHTML = "Bookmark";
-        document.getElementById("searchbtn").innerHTML = "Search";
-        document.getElementById("lang_bttn").innerHTML = "ENGLISH";
-        document.getElementById("search_input_field").placeholder = "Search location";
-        document.getElementById("search_bttn").innerHTML = "Search";
-    }
-
-};
-
-// finish
-function getFacilityData() {
-
-    const localStorage = window.localStorage;
-    const facility_data = localStorage.getItem("facility_data");
-
-    if (facility_data){
-
-        var facilities = JSON.parse(facility_data)
-        showRoute(facilities);
-
-    }else{
-
-        const path = "facility-fw.json";
-
-        fetch (path)
-        .then(res => res.json())
-        .then(data => {
-
-            localStorage.setItem("facility_data", JSON.stringify(data));
-
-        });
-
-    }
-
-};
-
-// finish
-function showRoute(data){
-
-    var table = document.getElementById("records_table");
-    var tbody = table.getElementsByTagName("tbody");
-
-    if (tbody.length != 0){
-        tbody[0].parentNode.removeChild(tbody[0]);
-    }
-
-    table.appendChild(document.createElement("tbody"));
-    var language = localStorage.getItem("language_type");
-
-    if (language === "zh_hk"){
-        for (var i = 0; i < data.length; i++){
-            var new_row = tbody[0].insertRow();
-            var new_cell = new_row.insertCell();
-            var new_text = document.createTextNode(data[i].Title_tc);
-            new_cell.appendChild(new_text);
-            new_cell.setAttribute("onclick", "redirectDetailPage(this)");
-        }
-    } else {
-        for (var i = 0; i < data.length; i++){
-            var new_row = tbody[0].insertRow();
-            var new_cell = new_row.insertCell();
-            var new_text = document.createTextNode(data[i].Title_en);
-            new_cell.appendChild(new_text);
-            new_cell.setAttribute("onclick", "redirectDetailPage(this)");
-        }
-
-    }
-
-};
-
-function redirectDetailPage(tableObj){
-
-//    document.getElementById("test_label").innerHTML = text.textContent;
-    const localStorage = window.localStorage;
-    localStorage.removeItem("selected_facility");
-    const facility_data = localStorage.getItem("facility_data");
-    const language_type = localStorage.getItem("language_type");
-
-    var facilities = JSON.parse(facility_data);
-
-    for (var i of facilities){
-
-        if (language_type === "zh_hk" &&
-            i.Title_tc === tableObj.textContent){
-
-            localStorage.setItem("selected_facility", JSON.stringify(i));
-            break;
-        } else if (language_type === "eng" &&
-                   i.Title_en === tableObj.textContent){
-
-            localStorage.setItem("selected_facility", JSON.stringify(i));
-            break;
-
-        }
-    }
-    changePage("details.html");
-
-}
-
-function search() {
-
-    var input = document.getElementById("search_input_field");
-    var filter = input.value.toUpperCase();
-    var tbody = document.getElementById("records_table");
-    var tr = tbody.getElementsByTagName("tr");
-
-    for(var i =0; tr.length;i++){
-         td = tr[i].getElementsByTagName("td")[0] ;
-            if(td){
-                var txtValue = td.textContent || td.innerText;
-                if(txtValue.toUpperCase().indexOf(filter) >-1){
-                        tr[i].style.display = "";
-                    }else{
-                       tr[i].style.display = "none";
-                    }
-            }
-
-    }
-
-};
-
-//nav bar code here
-
-//search button
-function show_hide_searchbar(){
-    var hidesearch = document.getElementById("middle-part");
-    var shorttable = document.getElementsByClassName("tableFixHead");
-
-    //hides search bar
-     if (hidesearch.style.display === "none") {
-        hidesearch.style.display = "block";
-      }else {
-           hidesearch.style.display = "none";
-      }
-
-    //extend and none extend the table so that search bar have space to show up
-       if (shorttable.style.height === "420px") {
-          shorttable.style.height = "380px";
-        }else {
-             shorttable.style.height = "420px";
-        }
-}
-
-
-function changePage(page){
-
-    window.location.href = page;
-
-}
-
-
-
-createLanguageType();
-
-getFacilityData();
-
+<head>
+    <meta charset="UTF-8">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+          rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/index.css">
+
+</head>
+<body>
+<!--header copy this to other page as well-->
+<div id="label-setting">
+    <label id="headLbl"></label>
+</div>
+
+<!--header copy this to other page as well-->
+
+<hr>
+
+
+<main id="middle-part">
+
+    <div class="main_div container" >
+
+        <div>
+            <input id="search_input_field" placeholder="">
+        </div>
+
+        <div>
+            <button class="btn btn-success btn-sm" id="search_bttn"></button>
+        </div>
+    </div>
+</main>
+<hr>
+
+<div class="tableFixHead">
+    <table id="records_table">
+
+    </table>
+
+    <!--nav bar stuff here-->
+    <div class="stickyBottomNav" >
+        <ul id="navitems">
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <button id="mapbtn">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-geo-alt-fill" viewBox="0 0 16 16">
+                                <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/>
+                            </svg><div></div></button>
+                    </div>
+                    <div class="col" >
+                        <button id="bookmarkbtn"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bookmarks" viewBox="0 0 16 16">
+                            <path d="M2 4a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v11.5a.5.5 0 0 1-.777.416L7 13.101l-4.223 2.815A.5.5 0 0 1 2 15.5V4zm2-1a1 1 0 0 0-1 1v10.566l3.723-2.482a.5.5 0 0 1 .554 0L11 14.566V4a1 1 0 0 0-1-1H4z"/>
+                            <path d="M4.268 1H12a1 1 0 0 1 1 1v11.768l.223.148A.5.5 0 0 0 14 13.5V2a2 2 0 0 0-2-2H6a2 2 0 0 0-1.732 1z"/>
+                        </svg></button>
+                    </div>
+                    <div class="col" >
+                        <button id="searchbtn" onclick="show_hide_searchbar()">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                                <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                            </svg></button>
+                    </div>
+                    <div class="col">
+                        <button id="lang_bttn" value="eng" >
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-translate" viewBox="0 0 16 16">
+                                <path d="M4.545 6.714 4.11 8H3l1.862-5h1.284L8 8H6.833l-.435-1.286H4.545zm1.634-.736L5.5 3.956h-.049l-.679 2.022H6.18z"/>
+                                <path d="M0 2a2 2 0 0 1 2-2h7a2 2 0 0 1 2 2v3h3a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-3H2a2 2 0 0 1-2-2V2zm2-1a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1h7a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H2zm7.138 9.995c.193.301.402.583.63.846-.748.575-1.673 1.001-2.768 1.292.178.217.451.635.555.867 1.125-.359 2.08-.844 2.886-1.494.777.665 1.739 1.165 2.93 1.472.133-.254.414-.673.629-.89-1.125-.253-2.057-.694-2.82-1.284.681-.747 1.222-1.651 1.621-2.757H14V8h-3v1.047h.765c-.318.844-.74 1.546-1.272 2.13a6.066 6.066 0 0 1-.415-.492 1.988 1.988 0 0 1-.94.31z"/>
+                            </svg></button>
+                    </div>
+                </div>
+            </div>
+        </ul>
+    </div>
+    <!--    nav bar code finish here-->
+
+</div>
+
+
+<script src="js/index.js"></script>
+
+</body>
