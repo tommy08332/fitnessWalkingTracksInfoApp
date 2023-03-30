@@ -5,7 +5,7 @@
    bottom: 0;
    width: 100%;
    z-index: 5;
-   background-color: 3333FF;
+   background-color: #4141EF;
    color: white;
    text-align: center;
    height:11%;
@@ -42,7 +42,6 @@ font-size:80%;
 color:white;
 border:none;
 background:none;
-
 }
 
 #lang_bttn{
@@ -67,7 +66,7 @@ opacity: 0.7;
 
 /*this part is for nav level (label)*/
 #label-setting{
-    background-color: #3333FF;
+    background-color: #4141EF;
     width:100%;
     padding-top:3%;
     text-align: center;
@@ -94,13 +93,13 @@ hr{
 }
 
 #middle-part{
-    background-color:#1e1e99;
+    background-color:#3333FF;
     padding:2%;
     display:none;
 }
 
 #search_bttn{
-    background-color:green;
+    background-color:6767ff;
     text-align: center;
 }
 
@@ -119,7 +118,7 @@ hr{
  }
  .tableFixHead {
       overflow-y: auto; /* make the table scrollable if height is more than 200 px  */
-      height: 100%; /* gives an initial height of 200px to the table 420*/
+      height: 420px; /* gives an initial height of 200px to the table 420*/
  }
 .tableFixHead thead th {
       position: sticky; /* make the table heads sticky */
