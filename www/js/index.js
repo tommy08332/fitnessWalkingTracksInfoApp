@@ -70,10 +70,10 @@ function setText(language){
         document.getElementById("lang_text").innerHTML = "中文";
         document.getElementById("search_input_field").placeholder = "搜尋位置";
         document.getElementById("search_bttn").innerHTML = "搜尋";
-        if(document.getElementById("search_text") !='undefined'){
+        if(document.getElementById("search_text") != null){
             document.getElementById("search_text").innerHTML = "搜尋";
         }
-        if(document.getElementById("home_text") !='undefined'){
+        if(document.getElementById("home_text") != null){
             document.getElementById("home_text").innerHTML = "主頁";
         }
 
@@ -90,10 +90,10 @@ function setText(language){
         document.getElementById("lang_text").innerHTML = "ENGLISH";
         document.getElementById("search_input_field").placeholder = "Search location";
         document.getElementById("search_bttn").innerHTML = "Search";
-        if(document.getElementById("search_text") !='undefined'){
+        if(document.getElementById("search_text") != null){
             document.getElementById("search_text").innerHTML = "Search";
         }
-        if(document.getElementById("home_text") !='undefined'){
+        if(document.getElementById("home_text") != null){
             document.getElementById("home_text").innerHTML = "Home";
         }
     }
@@ -219,8 +219,8 @@ var input = document.getElementById("search_input_field");
         searchbtn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-house-door-fill" viewBox="0 0 16 16"><path d="M6.5 14.5v-3.505c0-.245.25-.495.5-.495h2c.25 0 .5.25.5.5v3.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5Z"/></svg><div id="home_text">Home</div>';
 
     }
-    // var searchbtn = document.getElementById("searchbtn");
-    // searchbtn.setAttribute("onclick", "searchReset()");
+//    var searchbtn = document.getElementById("searchbtn");
+//    searchbtn.setAttribute("onclick", "searchReset()");
 
 };
 
@@ -228,32 +228,45 @@ var input = document.getElementById("search_input_field");
 
 //search button
 function show_hide_searchbar(){
-
+    console.log("show hide search bar");
     var hidesearch = document.getElementById("middle-part");
 
     //hides search bar
-     if (hidesearch.style.display === "none") {
+     if (hidesearch.style.display == "none") {
         hidesearch.style.display = "block";
       }else {
+      if(document.getElementById("home_text") != null){
+        var searchbtn = document.getElementById("searchbtn");
+
+          const localStorage = window.localStorage;
+          let language_type = localStorage.getItem("language_type");
+
+          if (language_type === "zh_hk"){
+              searchbtn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16"><path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" /></svg><div id="search_text">搜尋</div>';
+          } else{
+              searchbtn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16"><path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" /></svg><div id="search_text">Search</div>';
+          }
+          getFacilityData();
+      }
            hidesearch.style.display = "none";
       }
 
 }
 
-function searchReset(){
-
-    var hidesearch = document.getElementById("middle-part");
-    hidesearch.style.display = "none";
-
-    createLanguageType();
-    getFacilityData();
-
-    var searchbtn = document.getElementById("searchbtn");
-    search_bttn.setAttribute("onclick", "show_hide_searchbar()");
-
-    document.getElementById("search_input_field").innerHTML = "";
-
-}
+//function searchReset(){
+//
+//    var hidesearch = document.getElementById("middle-part");
+//    hidesearch.style.display = "none";
+//
+//    createLanguageType();
+//    getFacilityData();
+//
+//    var searchbtn = document.getElementById("searchbtn");
+//    search_bttn.setAttribute("onclick", "show_hide_searchbar()");
+//
+//    document.getElementById("search_input_field").innerHTML = "";
+//
+//}
 
 
 function changePage(page){
