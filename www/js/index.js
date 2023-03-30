@@ -16,7 +16,7 @@ langButton.onclick = function (){
         language = "zh_hk";
     }
 
-    document.getElementById("lang_bttn").value = language;
+    
     setText(language);
     getFacilityData();
 
@@ -46,6 +46,7 @@ function setText(language){
 
     const localStorage = window.localStorage;
     let language_type = localStorage.getItem("language_type");
+    langButton.value = language;
 
     if (language_type !== language){
 
@@ -62,10 +63,10 @@ function setText(language){
 
         /// set text to traditional chinese
         document.getElementById("headLbl").innerHTML = "健步行徑";
-        document.getElementById("mapbtn").innerHTML = "地圖";
-        document.getElementById("bookmarkbtn").innerHTML = "書籤";
-        document.getElementById("searchbtn").innerHTML = "搜尋";
-        document.getElementById("lang_bttn").innerHTML = "中文";
+        document.getElementById("map_text").innerHTML = "地圖";
+        document.getElementById("bookmark_text").innerHTML = "書籤";
+        document.getElementById("search_text").innerHTML = "搜尋";
+        document.getElementById("lang_text").innerHTML = "中文";
         document.getElementById("search_input_field").placeholder = "搜尋位置";
         document.getElementById("search_bttn").innerHTML = "搜尋";
 
@@ -75,10 +76,10 @@ function setText(language){
 
         /// set text to english
         document.getElementById("headLbl").innerHTML = "Fitness Walking Tracks";
-        document.getElementById("mapbtn").innerHTML = "Map";
-        document.getElementById("bookmarkbtn").innerHTML = "Bookmark";
-        document.getElementById("searchbtn").innerHTML = "Search";
-        document.getElementById("lang_bttn").innerHTML = "ENGLISH";
+        document.getElementById("map_text").innerHTML = "Map";
+        document.getElementById("bookmark_text").innerHTML = "Bookmark";
+        document.getElementById("search_text").innerHTML = "Search";
+        document.getElementById("lang_text").innerHTML = "ENGLISH";
         document.getElementById("search_input_field").placeholder = "Search location";
         document.getElementById("search_bttn").innerHTML = "Search";
     }
