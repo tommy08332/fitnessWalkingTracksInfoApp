@@ -1,6 +1,5 @@
 //google map
 function showMap(facility_data) {
-    console.log(facility_data);
 
     var map = new google.maps.Map(document.getElementById("googleMap"), {
         zoom: 11, center: { lat: 22.327476, lng: 114.165243 }
@@ -37,7 +36,7 @@ function showMap(facility_data) {
                             '</div>';
                         break;
                     default:
-                        consloe.log("Unknown lanuage type");
+
                 }
                 infowindow.setContent(content);
                 infowindow.open(map, marker);
@@ -138,8 +137,6 @@ function setText(language) {
         language_type = language;
 
     }
-
-    console.log("language_type    ", language_type);
 
     if (language_type === "zh_hk") {
 
