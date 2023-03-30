@@ -1,12 +1,27 @@
 //map button code ends here
-const mapButton = document.querySelector("#mapbtn");
-const langButton = document.querySelector("#lang_bttn");
+const mapButton = document.querySelector("#mapbtn"),
+      langButton = document.querySelector("#lang_bttn"),
+      searchButton = document.querySelector("#search_bttn"),
+      bookmarkButton = document.querySelector("#bookmarkbtn"),
+      searchMenuButton = document.querySelector("#searchbtn");
+
+
+
+
 
 mapButton.onclick = function(){
     changePage("map.html");
 }
 
-langButton.onclick = function (){
+bookmarkButton.onclick = function(){
+    changePage("bookmark.html");
+}
+
+searchMenuButton.onclick = function(){
+    show_hide_searchbar();
+}
+
+langButton.onclick = function(){
 
     let language = document.getElementById("lang_bttn").value;
     if (language === "zh_hk"){
@@ -21,6 +36,11 @@ langButton.onclick = function (){
     getFacilityData();
 
 }
+
+searchButton.onclick = function(){
+    search();
+}
+
 
 function createLanguageType() {
 
@@ -188,7 +208,7 @@ function redirectDetailPage(tableObj){
 
 function search() {
 
-var input = document.getElementById("search_input_field");
+    var input = document.getElementById("search_input_field");
     var filter = input.value.toUpperCase();
     var tbody = document.getElementById("records_table");
 
