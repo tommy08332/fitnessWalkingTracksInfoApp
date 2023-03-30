@@ -194,19 +194,22 @@ function search() {
 //            }
 //
 //    }
+    var searchbtn = document.getElementById("searchbtn");
 
     const localStorage = window.localStorage;
     let language_type = localStorage.getItem("language_type");
-    console.log("language_type  ",language_type);
+
     if (language_type === "zh_hk"){
 
-        document.getElementById("searchbtn").innerHTML = "主頁";
+        searchbtn.innerHTML = "主頁";
 
     } else{
 
-        document.getElementById("searchbtn").innerHTML = "Home";
+        searchbtn.innerHTML = "Home";
 
     }
+    var searchbtn = document.getElementById("searchbtn");
+    searchbtn.setAttribute("onclick", "searchReset()");
 
 };
 
@@ -215,10 +218,7 @@ function search() {
 //search button
 function show_hide_searchbar(){
 
-
-
     var hidesearch = document.getElementById("middle-part");
-    var shorttable = document.getElementsByClassName("tableFixHead");
 
     //hides search bar
      if (hidesearch.style.display === "none") {
@@ -227,13 +227,20 @@ function show_hide_searchbar(){
            hidesearch.style.display = "none";
       }
 
-    //extend and none extend the table so that search bar have space to show up
-       if (shorttable.style.height === "420px") {
-          shorttable.style.height = "380px";
-        }else {
-             shorttable.style.height = "420px";
-        }
+}
 
+function searchReset(){
+
+    var hidesearch = document.getElementById("middle-part");
+    hidesearch.style.display = "none";
+
+    createLanguageType();
+    getFacilityData();
+
+    var searchbtn = document.getElementById("searchbtn");
+    search_bttn.setAttribute("onclick", "show_hide_searchbar()");
+
+    document.getElementById("search_input_field").innerHTML = "";
 
 }
 
