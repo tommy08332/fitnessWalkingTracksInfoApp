@@ -187,7 +187,7 @@ function setText(language){
     if (language_type === "zh_hk") {
 
         /// set text to traditional chinese
-        document.getElementById("headLbl").innerHTML = "健步行徑";
+        document.getElementById("headLbl").innerHTML = "詳細信息";
         document.getElementById("map_text").innerHTML = "地圖";
         document.getElementById("bookmark_text").innerHTML = "書籤";
         document.getElementById("home_text").innerHTML = "主頁";
@@ -196,7 +196,7 @@ function setText(language){
     } else {
 
         /// set text to english
-        document.getElementById("headLbl").innerHTML = "Fitness Walking Tracks";
+        document.getElementById("headLbl").innerHTML = "Details";
         document.getElementById("map_text").innerHTML = "Map";
         document.getElementById("bookmark_text").innerHTML = "Bookmark";
         document.getElementById("home_text").innerHTML = "Home";
