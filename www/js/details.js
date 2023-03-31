@@ -16,16 +16,26 @@ langButton.onclick = function (){
 
     let language = document.getElementById("lang_bttn").value;
 
-    if (language === "zh_hk"){
+    // if (language === "zh_hk"){
 
-        language = "eng";
-    } else{
+    //     document.getElementById("lang_text").innerHTML = "中文";
+    // } else{
 
-        language = "zh_hk";
+    //     document.getElementById("lang_text").innerHTML = "English";
 
+    // }
+    switch(language){
+        case "zh_hk":
+            language = "eng";
+            break;
+        case "eng":
+            language = "zh_hk";
+            break;
+        default:
+            language = "eng";
     }
 
-    document.getElementById("lang_bttn").value = language;
+    // document.getElementById("lang_bttn").value = language;
     setText(language);
     showSelectedRouteDetails();
 
