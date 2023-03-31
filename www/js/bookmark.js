@@ -102,7 +102,11 @@ function getBookmarkedRoute(){
         if (tbody.length != 0){
             tbody[0].parentNode.removeChild(tbody[0]);
         }
-
+        if (table.getElementsByTagName("thead").length == 0){
+            var thead = document.createElement("thead");
+            thead.innerHTML = "<tr><th id='bookmark_th'>Title</th></tr>";
+            table.appendChild(thead);
+        }
         table.appendChild(document.createElement("tbody"));
         var language = localStorage.getItem("language_type");
 
