@@ -1,155 +1,33 @@
 const homeButton = document.querySelector("#homebtn"),
       mapButton = document.querySelector("#mapbtn"),
       langButton = document.querySelector("#lang_bttn"),
-      addBookButton = document.querySelector("#bookbtn"),
-      bookmarkbtn = document.querySelector("#bookmarkbtn");
+      bookmarkButton = document.querySelector("#bookmarkbtn");
+
+bookmarkButton.onclick = function(){
+    changePage("bookmark.html");
+}
+
+homeButton.onclick = function(){
+    changePage("index.html");
+}
 
 mapButton.onclick = function(){
     changePage("map.html");
 }
 
-bookmarkbtn.onclick = function(){
-    changePage("bookmark.html");
-}
-
 langButton.onclick = function (){
 
     let language = document.getElementById("lang_bttn").value;
-
     if (language === "zh_hk"){
 
         language = "eng";
     } else{
-
         language = "zh_hk";
-
     }
 
     document.getElementById("lang_bttn").value = language;
     setText(language);
-    showSelectedRouteDetails();
-
-}
-
-addBookButton.onclick = function (){
-
-    if (isBookmarked()){
-
-        removeBookmark();
-        setBookmarkBttnColor(false);
-
-    } else{
-
-        addBookmark();
-        setBookmarkBttnColor(true);
-    }
-
-}
-
-function isBookmarked(){
-
-    const localStorage = window.localStorage;
-    var bookmark_item = JSON.parse(localStorage.getItem("bookmark_item"));
-    var current_data = JSON.parse(localStorage.getItem("selected_facility"));
-
-    if (bookmark_item) {
-
-        for (var i = 0; i < bookmark_item.length; i++){
-
-            if (bookmark_item[i].Title_en === current_data.Title_en){
-
-                return true;
-
-            }
-        }
-    }
-
-    return false;
-
-}
-
-function setBookmarkBttnColor(result){
-
-    var bookmark_color_change = document.getElementById("bookbtn");
-//    bookmark_color_change.style.color = "#919191";
-
-    if (result){
-
-        bookmark_color_change.style.color = "white";
-
-    } else {
-
-        bookmark_color_change.style.color = "#919191";
-
-    }
-
-}
-
-function addBookmark() {
-
-    const localStorage = window.localStorage;
-    var current_data = JSON.parse(localStorage.getItem("selected_facility"));
-    var bookmark_item = JSON.parse(localStorage.getItem("bookmark_item"));
-    var bookmark_arr = [];
-
-    var isStored = false;
-
-    if (bookmark_item){
-
-        for (var i = 0; i < bookmark_item.length; i++){
-
-            if (bookmark_item[i].Title_en === current_data.Title_en){
-
-                isStored = true;
-
-            } else{
-
-                bookmark_arr.push(bookmark_item[i]);
-
-            }
-
-        }
-
-        if (!isStored){
-
-            localStorage.removeItem("bookmark_item");
-            bookmark_arr.push(current_data);
-            localStorage.setItem("bookmark_item", JSON.stringify(bookmark_arr));
-
-        }
-
-    } else {
-
-          bookmark_arr.push(current_data);
-          localStorage.setItem("bookmark_item", JSON.stringify(bookmark_arr));
-
-    }
-
-}
-
-function removeBookmark() {
-
-    const localStorage = window.localStorage;
-    var current_data = JSON.parse(localStorage.getItem("selected_facility"));
-    var bookmark_item = JSON.parse(localStorage.getItem("bookmark_item"));
-    var bookmark_arr = [];
-
-    if (bookmark_item){
-
-        for (var i = 0; i < bookmark_item.length; i++){
-
-            if (bookmark_item[i].Title_en !== current_data.Title_en){
-
-                bookmark_arr.push(bookmark_item[i]);
-
-            }
-
-        }
-        localStorage.removeItem("bookmark_item");
-        localStorage.setItem("bookmark_item", JSON.stringify(bookmark_arr));
-
-    }
-
+    getBookmarkedRoute();
 
 }
 
@@ -165,7 +43,7 @@ function createLanguageType() {
     } else {
 
         localStorage.setItem("language_type", "eng");
-        createLanguageType();
+        getBookmarkedRoute();
 
     }
 
@@ -187,7 +65,8 @@ function setText(language){
     if (language_type === "zh_hk") {
 
         /// set text to traditional chinese
-        document.getElementById("headLbl").innerHTML = "健步行徑";
+        document.getElementById("headLbl").innerHTML = "書籤";
+        document.getElementById("bookmark_th").innerHTML = "路徑"
         document.getElementById("map_text").innerHTML = "地圖";
         document.getElementById("bookmark_text").innerHTML = "書籤";
         document.getElementById("home_text").innerHTML = "主頁";
@@ -196,7 +75,8 @@ function setText(language){
     } else {
 
         /// set text to english
-        document.getElementById("headLbl").innerHTML = "Fitness Walking Tracks";
+        document.getElementById("headLbl").innerHTML = "Bookmark";
+        document.getElementById("bookmark_th").innerHTML = "Title"
         document.getElementById("map_text").innerHTML = "Map";
         document.getElementById("bookmark_text").innerHTML = "Bookmark";
         document.getElementById("home_text").innerHTML = "Home";
@@ -205,59 +85,84 @@ function setText(language){
 
 };
 
-
-function showSelectedRouteDetails(){
+function getBookmarkedRoute(){
 
     const localStorage = window.localStorage;
+    const bookmark_item = localStorage.getItem("bookmark_item");
 
-    var language = localStorage.getItem("language_type");
+    if (bookmark_item) {
 
-    var data = localStorage.getItem("selected_facility");
+        var table = document.getElementById("bookmark_items");
+        var tbody = table.getElementsByTagName("tbody");
 
-    data = JSON.parse(data);
+        if (tbody.length != 0){
+            tbody[0].parentNode.removeChild(tbody[0]);
+        }
 
-    var picture = document.getElementById("img_photo");
-//
-    if (language === "zh_hk"){
+        table.appendChild(document.createElement("tbody"));
+        var language = localStorage.getItem("language_type");
 
-        picture.setAttribute("src", data.MapURL_tc);
-        document.getElementById("locationData").innerHTML = "路徑 : " + data.Title_tc;
-        document.getElementById("districtData").innerHTML = "分區 : " + data.District_tc;
-        document.getElementById("routeData").innerHTML = data.Route_tc;
-        document.getElementById("howToAccessData").innerHTML = "途徑 : " + data.HowToAccess_tc;
+        var get_bookmark_item = JSON.parse(bookmark_item);
 
-    } else {
+        if (language === "zh_hk"){
+            for (var i = 0; i < get_bookmark_item.length; i++){
 
-        picture.setAttribute("src", data.MapURL_en);
-        document.getElementById("locationData").innerHTML = "Title : " + data.Title_en;
-        document.getElementById("districtData").innerHTML = "District : " + data.District_en;
-        document.getElementById("routeData").innerHTML = data.Route_en;
-        document.getElementById("howToAccessData").innerHTML = "How to Access : " + data.HowToAccess_en;
+                var new_row = tbody[0].insertRow();
+                var new_cell = new_row.insertCell();
+                var new_text = document.createTextNode(get_bookmark_item[i].Title_tc);
+                new_cell.appendChild(new_text);
+                new_cell.setAttribute("onclick", "redirectDetailPage(this)");
+            }
+        } else {
 
+            for (var i = 0; i < get_bookmark_item.length; i++){
+
+                var new_row = tbody[0].insertRow();
+                var new_cell = new_row.insertCell();
+                var new_text = document.createTextNode(get_bookmark_item[i].Title_en);
+                new_cell.appendChild(new_text);
+                new_cell.setAttribute("onclick", "redirectDetailPage(this)");
+
+            }
+
+        }
     }
-
-};
-
-
-homeButton.onclick = function(){
-    changePage("index.html");
 }
 
+function redirectDetailPage(tableObj){
+
+    const localStorage = window.localStorage;
+    localStorage.removeItem("selected_facility");
+    const bookmark_items = localStorage.getItem("bookmark_item");
+    const language_type = localStorage.getItem("language_type");
+
+    var bookmarks = JSON.parse(bookmark_items);
+
+    for (var i of bookmarks){
+
+        if (language_type === "zh_hk" &&
+            i.Title_tc === tableObj.textContent){
+
+            localStorage.setItem("selected_facility", JSON.stringify(i));
+            break;
+
+        } else if (language_type === "eng" &&
+                   i.Title_en === tableObj.textContent){
+
+            localStorage.setItem("selected_facility", JSON.stringify(i));
+            break;
+
+        }
+    }
+
+    changePage("details.html");
+
+}
 
 function changePage(page){
     window.location.href = page;
 }
 
-document.addEventListener("backbutton", function () {
-
-    changePage("index.html");
-
-});
-
-var result = isBookmarked();
-
-setBookmarkBttnColor(result);
-
 createLanguageType();
 
-showSelectedRouteDetails();
+getBookmarkedRoute();
