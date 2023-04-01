@@ -16,26 +16,16 @@ langButton.onclick = function (){
 
     let language = document.getElementById("lang_bttn").value;
 
-    // if (language === "zh_hk"){
+    if (language === "zh_hk"){
 
-    //     document.getElementById("lang_text").innerHTML = "中文";
-    // } else{
+        language = "eng";
+    } else{
 
-    //     document.getElementById("lang_text").innerHTML = "English";
+        language = "zh_hk";
 
-    // }
-    switch(language){
-        case "zh_hk":
-            language = "eng";
-            break;
-        case "eng":
-            language = "zh_hk";
-            break;
-        default:
-            language = "eng";
     }
 
-    // document.getElementById("lang_bttn").value = language;
+    document.getElementById("lang_bttn").value = language;
     setText(language);
     showSelectedRouteDetails();
 
@@ -197,7 +187,7 @@ function setText(language){
     if (language_type === "zh_hk") {
 
         /// set text to traditional chinese
-        document.getElementById("headLbl").innerHTML = "詳細信息";
+        document.getElementById("headLbl").innerHTML = "健步行徑";
         document.getElementById("map_text").innerHTML = "地圖";
         document.getElementById("bookmark_text").innerHTML = "書籤";
         document.getElementById("home_text").innerHTML = "主頁";
@@ -206,7 +196,7 @@ function setText(language){
     } else {
 
         /// set text to english
-        document.getElementById("headLbl").innerHTML = "Details";
+        document.getElementById("headLbl").innerHTML = "Fitness Walking Tracks";
         document.getElementById("map_text").innerHTML = "Map";
         document.getElementById("bookmark_text").innerHTML = "Bookmark";
         document.getElementById("home_text").innerHTML = "Home";
