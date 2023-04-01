@@ -74,8 +74,6 @@ function setText(language){
 
     }
 
-    console.log("language_type    ", language_type);
-
     if (language_type === "zh_hk"){
 
         /// set text to traditional chinese
@@ -241,7 +239,7 @@ function search() {
 //nav bar code here
 
 function show_hide_searchbar(){
-    console.log("show hide search bar");
+
     var hidesearch = document.getElementById("middle-part");
 
     //hides search bar
