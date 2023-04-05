@@ -18,14 +18,18 @@ mapButton.onclick = function(){
 langButton.onclick = function (){
 
     let language = document.getElementById("lang_bttn").value;
-    if (language === "zh_hk"){
-
-        language = "eng";
-    } else{
-        language = "zh_hk";
+    switch(language){
+        case "zh_hk":
+            language = "eng";
+            break;
+        case "eng":
+            language = "zh_hk";
+            break;
+        default:
+            language = "eng";
     }
 
-    document.getElementById("lang_bttn").value = language;
+    // document.getElementById("lang_bttn").value = language;
     setText(language);
     getBookmarkedRoute();
 
@@ -89,6 +93,7 @@ function getBookmarkedRoute(){
 
     const localStorage = window.localStorage;
     const bookmark_item = localStorage.getItem("bookmark_item");
+    const language_type = localStorage.getItem("language_type");
 
     if (bookmark_item) {
 
@@ -98,7 +103,15 @@ function getBookmarkedRoute(){
         if (tbody.length != 0){
             tbody[0].parentNode.removeChild(tbody[0]);
         }
-
+        if (table.getElementsByTagName("thead").length == 0){
+            var thead = document.createElement("thead");
+            if (language_type === "zh_hk"){
+                thead.innerHTML = "<tr><th id='bookmark_th'>路徑</th></tr>";
+            }else{
+                thead.innerHTML = "<tr><th id='bookmark_th'>Title</th></tr>";
+            }
+            table.appendChild(thead);
+        }
         table.appendChild(document.createElement("tbody"));
         var language = localStorage.getItem("language_type");
 
