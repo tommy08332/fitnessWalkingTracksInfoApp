@@ -1,8 +1,8 @@
 {
   "name": "hk.edu.hkmu.fitnesswalkingtracksinfoapp",
-  "displayName": "FitnessWalkingTracksInfoApp",
+  "displayName": "Fitness Walking Tracks Info",
   "version": "1.0.0",
-  "description": "A sample Apache Cordova application that responds to the deviceready event.",
+  "description": "This is an application to show the fitness walking tracks information in Hong Kong.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -10,20 +10,14 @@
   "keywords": [
     "ecosystem:cordova"
   ],
-  "author": "Apache Cordova Team",
+  "author": "LICHIFUNG (13031837), Rai Jon (12749417), YEUNG Ho Yin Tommy (13024570), Wong Ping Kuen (13031493)",
   "license": "Apache-2.0",
   "devDependencies": {
-    "cordova-android": "^10.1.2",
-    "cordova-plugin-geolocation": "^4.1.0"
+    "cordova-android": "^10.1.2"
   },
   "cordova": {
     "platforms": [
       "android"
-    ],
-    "plugins": {
-      "cordova-plugin-geolocation": {
-        "GPS_REQUIRED": "true"
-      }
-    }
+    ]
   }
 }
