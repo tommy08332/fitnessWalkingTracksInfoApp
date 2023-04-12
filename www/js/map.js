@@ -9,7 +9,7 @@ function showMap(facility_data) {
     let language_type = window.localStorage.getItem("language_type");
     for (var i = 0; i < facility_data.length; i++) {
         var marker = new google.maps.Marker({
-            position: { lat: facility_data[i].Latitude, lng: facility_data[i].Longitude },
+            position: { lat: checkLatNumber(facility_data[i].Latitude), lng: facility_data[i].Longitude },
             map,
             animation: google.maps.Animation.DROP
         });
@@ -44,6 +44,15 @@ function showMap(facility_data) {
         })(marker, i));
     }
 };
+
+function checkLatNumber(lat){
+    switch(typeof lat){
+        case "number":
+            return lat;
+        case "string":
+            return Number(lat.split(",")[0]);
+    }
+}
 
 //get facility data
 function getFacilityData() {
