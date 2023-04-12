@@ -4,3 +4,7 @@ Before running the app, please run the command:
 
 cd fitnessWalkingTracksInfoApp\
 cordova platform add android
+
+For build app, please run the command:
+
+cordova build android
