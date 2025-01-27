@@ -17,8 +17,8 @@ Go to the directory of `fitnessWalkingTracksInfoApp-main\platforms\android\app\b
 # How to test the apk file
 There are two methods to test the application
 
-\1. Install the apk to your Android devices
-\If you configured an emulator on the Android Studio (here [tutorial](https://developer.android.com/studio/run/managing-avds)) to configure the emulator), you can run the cmd `cordova emulate android` to execute the application on the emulator.
+\ 1. Install the apk to your Android devices
+\ If you configured an emulator on the Android Studio (here [tutorial](https://developer.android.com/studio/run/managing-avds)) to configure the emulator), you can run the cmd `cordova emulate android` to execute the application on the emulator.
 
-\2. Run it in Android emulator
-\If you want to install and execute the application on your physical device, you need to turn on the `Developer Mode` and `USB Debugging` on it (Details on [here](https://developer.android.com/studio/debug/dev-options)), and then to run the cmd `cordova run android --device` after you connect your device to the computer.
+\ 2. Run it in Android emulator
+\ If you want to install and execute the application on your physical device, you need to turn on the `Developer Mode` and `USB Debugging` on it (Details on [here](https://developer.android.com/studio/debug/dev-options)), and then to run the cmd `cordova run android --device` after you connect your device to the computer.
