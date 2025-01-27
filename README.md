@@ -1,8 +1,8 @@
 # fitnessWalkingTracksInfoApp
 This is an Apache Cordova app that develops for the Android platform.\
+
+# Preparation
 To ensure the application deployment succeeds, please download the [node.js](https://nodejs.org/en) and execute a command of `npm install -g cordova`.
-
-
 
 # Application Deployment:
 After installing the `Cordova`, enter the project directory and execute the following command in sequence.
