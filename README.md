@@ -26,5 +26,5 @@ There are two methods to test the application
 # Application Previews
 ![alt text](https://github.com/tommy08332/fitnessWalkingTracksInfoApp/blob/main/pictures/pic_1.png?raw=true)<br />
 ![alt text](https://github.com/tommy08332/fitnessWalkingTracksInfoApp/blob/main/pictures/pic_2.png?raw=true)<br />
-![alt text](https://github.com/tommy08332/fitnessWalkingTracksInfoApp/blob/main/pictures/pic_4.png?raw=true)<br />
+![alt text](https://github.com/tommy08332/fitnessWalkingTracksInfoApp/blob/main/pictures/pic_5.png?raw=true)<br />
 ![alt text](https://github.com/tommy08332/fitnessWalkingTracksInfoApp/blob/main/pictures/pic_3.png?raw=true)
