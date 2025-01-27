@@ -1,5 +1,5 @@
 # fitnessWalkingTracksInfoApp
-This is an Apache Cordova app that develops for the Android platform. This application aims to show the info on Hong Kong Fitness Walking Tracks, to benefit the people who want to engage in fitness walking. This application used the dataset come from the DATA.GOV.HK ([Dataset](https://data.gov.hk/en-data/dataset/hk-lcsd-facility-facility-fw)].
+This is an Apache Cordova app that develops for the Android platform. This application aims to show the info on Hong Kong Fitness Walking Tracks, to benefit the people who want to engage in fitness walking. This application used the dataset come from the DATA.GOV.HK ([Dataset](https://data.gov.hk/en-data/dataset/hk-lcsd-facility-facility-fw)).
 
 # Preparation
 To ensure the application deployment succeeds, please download the [node.js](https://nodejs.org/en) and execute a command of `npm install -g cordova`.
