@@ -22,3 +22,10 @@ There are two methods to test the application
 
 <br /> 2. Run it in Android emulator
 <br /> If you want to install and execute the application on your physical device, you need to turn on the `Developer Mode` and `USB Debugging` on it (Details on [here](https://developer.android.com/studio/debug/dev-options)), and then to run the cmd `cordova run android --device` after you connect your device to the computer.
+
+# Application Previews
+pictures/pic_1.png
+![alt text](https://github.com/tommy08332/fitnessWalkingTracksInfoApp/pictures/pic_1.png?raw=true)
+![alt text](https://github.com/tommy08332/fitnessWalkingTracksInfoApp/pictures/pic_2.png?raw=true)
+![alt text](https://github.com/tommy08332/fitnessWalkingTracksInfoApp/pictures/pic_4.png?raw=true)
+![alt text](https://github.com/tommy08332/fitnessWalkingTracksInfoApp/pictures/pic_5.png?raw=true)
