@@ -3,10 +3,10 @@ This is an Apache Cordova app that develops for the Android platform. This appli
 
 # Preparation
 To ensure the application deployment succeeds, please download the following tools:
-<br /> - [node.js](https://nodejs.org/en) and execute a command of `npm install -g cordova`.
-<br /> - [Android Studio](https://developer.android.com/studio) with android SDK 33.0.2
-<br /> - [JDK 8](https://www.oracle.com/hk/java/technologies/javase/javase8-archive-downloads.html)
-<br /> - [Gradle](https://gradle.org/install/)
+<br /> * [node.js](https://nodejs.org/en) and execute a command of `npm install -g cordova`.
+<br /> * [Android Studio](https://developer.android.com/studio) with android SDK 33.0.2
+<br /> * [JDK 8](https://www.oracle.com/hk/java/technologies/javase/javase8-archive-downloads.html)
+<br /> * [Gradle](https://gradle.org/install/)
 
 # Application Deployment:
 After installing the `Cordova`, enter the project directory and execute the following command in sequence.
